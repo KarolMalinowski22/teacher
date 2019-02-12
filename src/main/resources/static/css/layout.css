@@ -1,0 +1,25 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.grid {
+    background: #00271c;
+    color: #cfff00;
+    font-family: 'Ubuntu', sans-serif;
+    display: grid;
+    grid-auto-columns: auto auto;
+}
+.list{
+    grid-column-start: 2;
+}
+#topnav{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    position: relative;
+    top: 0px;
+    background-color: #401303;
+    height: 40px;
+}
+.topNavButton{
+
+}
