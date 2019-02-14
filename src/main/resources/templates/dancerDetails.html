@@ -7,6 +7,21 @@
     <div id="topnav">
         <a class="topNavButton" href="/"><img alt="strona główna" src="https://dabuttonfactory.com/button.png?t=strona+g%C5%82%C3%B3wna&f=Ubuntu-Bold&ts=24&tc=cfff00&hp=20&vp=8&c=0&bgt=gradient&bgc=401303&ebgc=00271c"></a>
     </div>
+    <div th:object="${dancer}">
+        <label>imię&nbsp;
+            <input type="text" th:field="*{firstName}" th:value="*{firstName}">
+        </label>
+        <label>nazwisko&nbsp;
+            <input type="text" th:field="*{lastName}" th:value="*{lastName}">
+        </label>
+        <label>numer&nbsp;
+            <input type="text" th:field="*{phoneNumber}" th:value="*{phoneNumber}">
+        </label>
+        <label>email&nbsp;
+            <input type="text" th:field="*{email}" th:value="*{email}">
+        </label>
+        <!--todo: edytowanie grup-->
+    </div>
 </div>
 </body>
 </html>

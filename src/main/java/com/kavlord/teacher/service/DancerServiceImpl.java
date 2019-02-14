@@ -8,6 +8,8 @@ import org.springframework.web.client.HttpServerErrorException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class DancerServiceImpl implements DancerService {
     @Autowired
@@ -26,4 +28,10 @@ public class DancerServiceImpl implements DancerService {
     public Dancer update(Dancer dancer) {
         return dancerRepository.save(dancer);
     }
+
+    @Override
+    public Optional<Dancer> findById(Long id) {
+        return dancerRepository.findById(id);
+    }
+
 }
