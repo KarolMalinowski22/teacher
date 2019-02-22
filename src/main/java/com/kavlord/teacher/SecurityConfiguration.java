@@ -10,35 +10,32 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final String admin = "ADMIN";
+    private final String user = "USER";
     @Autowired
     private UserDetailsService appUserDetailsService;
-    @Bean
-    AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(appUserDetailsService);
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
-        return authenticationProvider;
-    }
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.
-                inMemoryAuthentication().
-                withUser("admin").password("admin").roles("ADMIN");
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/*").permitAll()
-        .anyRequest().permitAll()
-                .and().formLogin().defaultSuccessUrl("/");
-    }
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(appUserDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authProvider());
+    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/*").authorizeRequests().anyRequest().permitAll().and()
+                .formLogin()
+                    .loginPage("/login").defaultSuccessUrl("/").permitAll().and().httpBasic().and().csrf().disable();
+    }
+
 }

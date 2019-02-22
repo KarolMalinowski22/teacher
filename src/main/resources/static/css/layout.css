@@ -23,3 +23,15 @@ body{
 .topNavButton{
 
 }
+.registerButton{
+    background:    #401303;
+    background:    -webkit-linear-gradient(#401303, #00271c);
+    background:    linear-gradient(#401303, #00271c);
+    border-radius: 5px;
+    padding:       8px 20px;
+    color:         #cfff00;
+    display:       block;
+    font:          normal 700 24px/1 "Ubuntu", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px #000000;
+}
