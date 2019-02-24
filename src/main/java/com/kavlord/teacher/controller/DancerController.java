@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/dancer")
+@RequestMapping("/dancers")
 public class DancerController {
     @Autowired
     DancerService dancerService;

@@ -20,7 +20,7 @@
                 <td th:text="${dancer.firstName}"></td>
                 <td th:text="${dancer.lastName}"></td>
                 <td th:text="${dancer.phoneNumber}"></td>
-                <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/dancer/update(id=${dancer.id})}"><img alt="update" src="https://dabuttonfactory.com/button.png?t=edytuj&f=Ubuntu-Bold&ts=20&tc=cfff00&tshs=1&tshc=000&hp=20&vp=8&c=0&bgt=gradient&bgc=401303&ebgc=00271c" ></a></td>
+                <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/dancers/update(id=${dancer.id})}"><img alt="update" src="https://dabuttonfactory.com/button.png?t=edytuj&f=Ubuntu-Bold&ts=20&tc=cfff00&tshs=1&tshc=000&hp=20&vp=8&c=0&bgt=gradient&bgc=401303&ebgc=00271c" ></a></td>
             </tr>
         </table>
     </div>

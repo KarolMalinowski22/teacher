@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity(name="lesson")
-public class Lesson {
+class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

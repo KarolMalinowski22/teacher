@@ -38,4 +38,16 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
+    public List<String> getShortRoleNames(){
+        ArrayList<String> list = new ArrayList<>();
+        for(String fullName : roles){
+            if(fullName.matches("ROLE_.*")){
+                list.add(fullName.substring(5));
+            }else{
+                list.add(fullName);
+            }
+        }
+        return list;
+    }
 }
