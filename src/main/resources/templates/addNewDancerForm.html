@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="dancerDetailed" th:object="${dancer}">
-        <form id="newDancer" th:action="@{/saveDancer}" method="post">
+        <form id="newDancer" th:action="@{/dancers/saveDancer}" method="post">
             <label>imię&nbsp;
                 <input type="text" th:field="*{firstName}" required>
             </label>
