@@ -34,4 +34,12 @@ public class DancerServiceImpl implements DancerService {
         return dancerRepository.findById(id);
     }
 
+    @Override
+    public void save(Dancer dancer) {
+        dancerRepository.save(dancer);
+    }
+    @Override
+    public void delete(Long id){
+        dancerRepository.deleteById(id);
+    }
 }

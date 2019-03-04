@@ -14,7 +14,7 @@
     <link href="../static/css/layout.css" th:href="@{/css/layout.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
+<div class="grid">
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Zaloguj</h2>
         <p>
@@ -27,9 +27,9 @@
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
         <input name="_csrf" type="hidden" value="d9b960e1-ae1a-497c-bc68-51771075787c"/>
-        <button class="registerButton" type="submit">Sign in</button>
+        <button class="insideButton" type="submit" style="border: none;">Sign in</button>
         <h2 class="form-signin-heading" style="padding-top: 40px;">Jak nie masz konta, to je załóż.</h2>
-        <button class="registerButton" type="button" onclick="location.href='/register'">Register</button>
+        <button class="insideButton" type="button" onclick="location.href='/register'" style="border: none;">Register</button>
     </form>
 </div>
 </body>

@@ -20,10 +20,10 @@ public class DancerController {
     @RequestMapping
     public String showAllDancers(Model model){
         model.addAttribute("dancers", dancerService.findAll());
-        return "dancers";
+        return "dancers.html";
     }
-    @PostMapping("/update")
-    public String updateDancer(Model model, @RequestParam(name = "id")Long id){
+    @RequestMapping("/details")
+    public String dancerDetailed(Model model, @RequestParam(name = "id")Long id){
         Optional<Dancer> optionalDancer = dancerService.findById(id);
         if(optionalDancer.isPresent()){
             model.addAttribute("isUpdating", Boolean.TRUE);
@@ -31,7 +31,22 @@ public class DancerController {
             return "dancerDetails";
         }else{
             //todo: displaying error for user
-            return "redirect:/dancer";
+            return "redirect:/dancers";
         }
+    }
+    @RequestMapping("/addNewDancer")
+    public String addNewDancerForm(Model model){
+        model.addAttribute("dancer", new Dancer());
+        return "addNewDancerForm";
+    }
+    @PostMapping("/saveDancer")
+    public String saveDancer(Model model, @ModelAttribute("dancer")Dancer dancer){
+        dancerService.save(dancer);
+        return "redirect:/dancers";
+    }
+    @RequestMapping("/delete")
+    public String deleteDancer(Model model, @ModelAttribute("id")Long id){
+        dancerService.delete(id);
+        return "redirect:/dancers";
     }
 }

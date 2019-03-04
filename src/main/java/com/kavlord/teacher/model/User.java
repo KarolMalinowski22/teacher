@@ -33,6 +33,8 @@ public class User {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "userId"))
     @Column(name="roleName")
     private List<String> roles;
+    @OneToOne(mappedBy = "user")
+    private Dancer dancer;
     public User(String login, String password, String email){
         this.login = login;
         this.password = password;

@@ -3,17 +3,13 @@ package com.kavlord.teacher.controller;
 import com.kavlord.teacher.model.User;
 import com.kavlord.teacher.model.dto.UserDto;
 import com.kavlord.teacher.service.UserService;
-import com.kavlord.teacher.service.UserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,5 +49,15 @@ public class UserController {
             model.addAttribute("pagesNumbersList", pagesNumbersList);
         }
         return "users";
+    }
+    @RequestMapping("/user/details")
+    public String userDetailed(Model model, @RequestParam("id")Long userId){
+        Optional<User> optUser = userService.findUserById(userId);
+        if(optUser.isPresent()){
+            model.addAttribute("user", optUser.get());
+            return "userDetails";
+        }else{
+            return "redirect:/users";
+        }
     }
 }

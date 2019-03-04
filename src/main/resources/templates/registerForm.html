@@ -14,9 +14,9 @@
     <link href="../static/css/layout.css" th:href="@{/css/layout.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
+<div class="grid">
     <form class="form-signin" method="post" action="/register" th:object="${user}">
-        <h2 class="form-signin-heading">Zaloguj</h2>
+        <h2 class="form-signin-heading">Zarejestruj</h2>
         <p>
             <label for="email" class="sr-only">Username</label>
             <input type="text" id="email" name="email" class="form-control" th:field="*{email}" placeholder="Email" required
@@ -32,7 +32,7 @@
             <input type="password" id="password" name="password" class="form-control" th:field="*{password}" placeholder="Password" required>
         </p>
         <input name="_csrf" type="hidden" value="d9b960e1-ae1a-497c-bc68-51771075787c"/>
-        <button class="registerButton" type="submit">Sign in</button>
+        <button class="insideButton" type="submit" style="border: none">Sign in</button>
     </form>
 </div>
 </body>

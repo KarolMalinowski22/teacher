@@ -17,8 +17,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -50,16 +52,18 @@ public class DancerTest {
 
         when(dancerService.findAll()).thenReturn(dancers);
 
-        mockMvc.perform(get("/dancer"))
+        mockMvc.perform(get("/dancers"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("dancers"))
+                .andExpect(view().name("dancers.html"))
                 .andExpect(model().attribute("dancers", hasSize(2)));
     }
     @Test
     public void testUpdateDancerForm() throws Exception{
         Dancer dancer = new Dancer();
 
-        mockMvc.perform(post("/dancer/update")
+        when(dancerService.findById(any(Long.class))).thenReturn(Optional.of(dancer));
+
+        mockMvc.perform(post("/dancers/update").param("id", "1")
                 .flashAttr("dancer", dancer))
                 .andExpect(status().isOk())
                 .andExpect(view().name("dancerDetails"))

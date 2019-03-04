@@ -18,28 +18,25 @@
         </div>
     </div>
     <div class="dancerDetailed" th:object="${dancer}">
-        <form id="updateDancer" th:action="@{/dancers/saveDancer}" method="post">
-            <input type="hidden" th:field="*{id}" th:value="*{id}">
+        <form id="newDancer" th:action="@{/saveDancer}" method="post">
             <label>imię&nbsp;
-                <input type="text" th:field="*{firstName}" th:value="*{firstName}">
+                <input type="text" th:field="*{firstName}" required>
             </label>
             <label>nazwisko&nbsp;
-                <input type="text" th:field="*{lastName}" th:value="*{lastName}">
+                <input type="text" th:field="*{lastName}">
             </label>
             <label>numer&nbsp;
-                <input type="text" th:field="*{phoneNumber}" th:value="*{phoneNumber}">
+                <input type="text" th:field="*{phoneNumber}">
             </label>
             <label>email&nbsp;
-                <input type="text" th:field="*{email}" th:value="*{email}">
+                <input type="text" th:field="*{email}">
             </label>
-            <!--todo: edytowanie grup-->
         </form>
+        <!--todo: edytowanie grup-->
     </div>
     <div style="grid-column-start: 2; padding-top: 20px;">
-        <a class="insideButton" href="#" onclick="document.getElementById('updateDancer').submit()"
-           style="grid-column-start: 2">Zmień</a>
-        <a class="insideButton" th:href="@{/dancers/delete(id=${dancer.id})}"
-           style="grid-column-start: 2">Usuń</a>
+        <a class="insideButton" href="#" onclick="document.getElementById('newDancer').submit()"
+           style="grid-column-start: 2">Dodaj</a>
     </div>
 </div>
 </body>

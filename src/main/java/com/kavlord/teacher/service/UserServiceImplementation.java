@@ -50,6 +50,11 @@ public class UserServiceImplementation implements UserService{
         return userRepository.save(newUser);
     }
 
+    @Override
+    public Optional<User> findUserById(Long id) {
+        return userRepository.findById(id);
+    }
+
     private boolean usernameExists(String username) {
         Optional<User> byLogin = userRepository.findByLogin(username);
         return byLogin.isPresent();

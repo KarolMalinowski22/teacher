@@ -12,4 +12,8 @@ public interface DancerService {
     List<Dancer> findAllActive();
     Dancer update(Dancer dancer);
     Optional<Dancer> findById(Long id);
+
+    void save(Dancer dancer);
+
+    void delete(Long id);
 }

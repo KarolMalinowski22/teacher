@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
 <head>
     <link href="../static/css/layout.css" th:href="@{/css/layout.css}" rel="stylesheet"/>
 </head>
@@ -17,12 +16,18 @@
         <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
             <a class="topNavButton" href="/users">Użytkownicy</a>
         </div>
-        <div style="float: right;" sec:authorize="isAnonymous()">
-            <a class="topNavButton" href="/login">Zaloguj</a>
-        </div>
-        <div style="float: right;" sec:authorize="isAuthenticated()">
-            <a class="topNavButton" href="/logout">Wyloguj</a>
-        </div>
+    </div>
+    <div class="dancerDetailed" th:object="${user}">
+        <label>id&nbsp;
+            <input type="text" th:field="*{id}" th:value="*{id}">
+        </label>
+        <label>login&nbsp;
+            <input type="text" th:field="*{login}" th:value="*{login}">
+        </label>
+        <label>email&nbsp;
+            <input type="text" th:field="*{email}" th:value="*{email}">
+        </label>
+        <!--todo: edytowanie grup-->
     </div>
 </div>
 </body>

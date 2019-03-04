@@ -2,13 +2,28 @@ body{
     padding: 0;
     margin: 0;
 }
+
 .grid {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+
     background: #00271c;
     color: #cfff00;
     font-family: 'Ubuntu', sans-serif;
     display: grid;
     grid-auto-columns: auto auto;
 }
+
 .list{
     grid-column-start: 2;
 
@@ -18,15 +33,14 @@ body{
     font-size: 1.5em;
     padding-right: 20px;
 }
-#topnav{
-    grid-column-start: 1;
-    grid-column-end: 3;
-    position: relative;
-    top: 0px;
-    background-color: #401303;
-    height: 40px;
+.list th{
+    font-weight: normal;
+    color: rgba(207, 255, 0, 0.6);
 }
-#topnav div{
+
+
+
+.topnav div{
     display: inline;
     float: left;
 }
@@ -34,7 +48,6 @@ body{
     background:    #401303;
     background:    -webkit-linear-gradient(#401303, #00271c);
     background:    linear-gradient(#401303, #00271c);
-    border-radius: 5px;
     padding:       8px 20px;
     color:         #cfff00;
     display:       inline-block;
@@ -44,6 +57,79 @@ body{
 }
 .topNavButton:hover{
     background: #00271c;
+}
+.sidenav{
+    margin-top: 15px;
+}
+.sideNavButton{
+    background:    #401303;
+    background: linear-gradient(to right, #401303, #00271c);
+    background: -webkit-linear-gradient(to right, #401303, #00271c);
+    padding:       8px 20px;
+    color:         #cfff00;
+    font:          normal 700 24px/1 "Calibri", sans-serif;
+    text-align:    center;
+    text-decoration: none;
+}
+.sideNavButton:hover{
+    background: #401303;
+}
+.insideButton{
+    padding: 8px 20px;
+    color: #cfff00;
+    font: normal 700 24px/1 "Calibri", sans-serif;
+    text-align: center;
+    text-decoration: none;
+    background: #401303;
+    background: linear-gradient(#00271c, #401303, #00271c);
+    background: -webkit-linear-gradient(#00271c, #401303, #00271c);
+    width: 100%;
+}
+.insideButton:hover{
+    cursor: pointer;
+    background: #401303;
+}
+
+.clickRowToUpdate {
+    background: #401303;
+    background: linear-gradient(#00271c, #401303, #00271c);
+    background: -webkit-linear-gradient(#00271c, #401303, #00271c);
+}
+.clickRowToUpdate td{
+    padding: 8px 20px;
+}
+.clickRowToUpdate:hover{
+    cursor: pointer;
+    background: #401303;
+}
+.dancerDetailed{
+    grid-column-start: 2;
+    width: 300px;
+}
+.dancerDetailed input{
+    margin: 10px 0px 10px 0px;
+    background: #00271c;
+    background: linear-gradient(#401303, #00271c, #401303);
+    background: -webkit-linear-gradient(#401303, #00271c, #401303);
+    border: none;
+    color: #cfff00;
+    font-size: 1.5em;
+    text-align: center;
+}
+.dancerDetailed input:focus{
+    background: #401303;
+}
+.dancerDetailed label {
+    float: left; width: 10em; margin-right: 1em;
+    color: rgba(207, 255, 0, 0.6);
+}
+.topnav{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    position: relative;
+    top: 0px;
+    background-color: #401303;
+    height: 40px;
 }
 
 .simpleButton{

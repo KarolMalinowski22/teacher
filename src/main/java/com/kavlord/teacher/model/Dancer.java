@@ -34,6 +34,6 @@ public class Dancer {
             inverseJoinColumns = @JoinColumn(name = "lessonId"))
     private List<Lesson> presence;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "user")
+    @JoinColumn(name = "userId")
     private User user;
 }
