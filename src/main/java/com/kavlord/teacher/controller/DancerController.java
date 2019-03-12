@@ -25,6 +25,7 @@ public class DancerController {
     GroupService groupService;
     @RequestMapping
     public String showAllDancers(Model model){
+        model.addAttribute("objectTypeName", "Dancer");
         model.addAttribute("people", dancerService.findAll());
         return "people.html";
     }
@@ -45,7 +46,7 @@ public class DancerController {
         model.addAttribute("dancer", new Dancer());
         return "forms/addNewDancerForm";
     }
-    @PostMapping("/saveDancer")
+    @PostMapping("/save")
     public String saveDancer(Model model, @ModelAttribute("dancer")Dancer dancer){
         dancerService.save(dancer);
         return "redirect:/dancers";

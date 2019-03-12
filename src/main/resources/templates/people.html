@@ -15,6 +15,15 @@
             <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
                 <a class="topNavButton" href="/users">Użytkownicy</a>
             </div>
+
+            <div th:if="${objectTypeName.equals('Teacher')}" sec:authorize="hasAnyRole('ROLE_TEACHER')">
+                <a class="topNavButton" href="/dancers">Tancerze</a>
+            </div>
+            <!--or-->
+            <div th:if="${objectTypeName.equals('Dancer')}" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a class="topNavButton" href="/teachers">Nauczyciele</a>
+            </div>
+
             <div style="float: right;" sec:authorize="isAnonymous()">
                 <a class="topNavButton" href="/login">Zaloguj</a>
             </div>
@@ -25,9 +34,15 @@
     </div>
 
     <div class="sidenav">
-        <div sec:authorize="hasAnyRole('ROLE_TEACHER')">
+
+        <div th:if="${objectTypeName.equals('Dancer')}" sec:authorize="hasAnyRole('ROLE_TEACHER')">
             <a class="sideNavButton" href="/dancers/addNewDancer">Dodaj tancerza</a>
         </div>
+        <!--or-->
+        <div th:if="${objectTypeName.equals('Teacher')}" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+            <a class="sideNavButton" href="/teachers/addNewTeacher">Dodaj nauczyciela</a>
+        </div>
+
     </div>
 
     <div class="list">
@@ -42,6 +57,7 @@
                 <td th:text="*{lastName}"></td>
                 <td th:text="*{phoneNumber}"></td>
                 <td th:if="${person.class.name == 'com.kavlord.teacher.model.Dancer'}" style="display: none"><a th:href="@{/dancers/details(id=*{id})}"></a></td>
+                <!--or-->
                 <td th:if="${person.class.name == 'com.kavlord.teacher.model.Teacher'}" style="display: none"><a th:href="@{/teachers/details(id=*{id})}"></a></td>
             </tr>
         </table>
