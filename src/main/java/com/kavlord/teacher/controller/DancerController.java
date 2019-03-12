@@ -29,6 +29,12 @@ public class DancerController {
         model.addAttribute("people", dancerService.findAll());
         return "people.html";
     }
+    @RequestMapping("/group")
+    public String showGroup(Model model, @ModelAttribute("groupId")Long groupId){
+        model.addAttribute("objectTypeName", "Dancer");
+        model.addAttribute("people", dancerService.findByGroup(groupService.findById(groupId).get()));
+        return "people.html";
+    }
     @RequestMapping("/details")
     public String dancerDetailed(Model model, @RequestParam(name = "id")Long id){
         Optional<Dancer> optionalDancer = dancerService.findById(id);

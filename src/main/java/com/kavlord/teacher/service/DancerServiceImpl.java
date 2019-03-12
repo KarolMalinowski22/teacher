@@ -1,6 +1,7 @@
 package com.kavlord.teacher.service;
 
 import com.kavlord.teacher.model.Dancer;
+import com.kavlord.teacher.model.Group;
 import com.kavlord.teacher.repository.DancerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,11 @@ public class DancerServiceImpl implements DancerService {
     @Override
     public List<Dancer> findAll() {
         return dancerRepository.findAll();
+    }
+
+    @Override
+    public List<Dancer> findByGroup(Group group) {
+        return dancerRepository.findAllByGroupsContains(group);
     }
 
     @Override

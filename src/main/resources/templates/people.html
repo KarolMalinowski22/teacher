@@ -46,6 +46,8 @@
     </div>
 
     <div class="list">
+        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Teacher')}">Nauczyciele</h1>
+        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Dancer')}">Tancerze</h1>
         <table cellspacing="0">
             <tr>
                 <th>imię</th>

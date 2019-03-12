@@ -10,11 +10,17 @@ import java.util.Optional;
 @Service
 public interface DancerService {
     List<Dancer> findAll();
+
     List<Dancer> findAllActive();
+
     Dancer update(Dancer dancer);
+
     Optional<Dancer> findById(Long id);
 
     void save(Dancer dancer);
 
     void delete(Long id);
+
+    List<Dancer> findByGroup(Group group);
+
 }
