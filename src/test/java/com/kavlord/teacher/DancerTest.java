@@ -54,8 +54,8 @@ public class DancerTest {
 
         mockMvc.perform(get("/dancers"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("dancers.html"))
-                .andExpect(model().attribute("dancers", hasSize(2)));
+                .andExpect(view().name("people.html"))
+                .andExpect(model().attribute("people", hasSize(2)));
     }
     @Test
     public void testUpdateDancerForm() throws Exception{

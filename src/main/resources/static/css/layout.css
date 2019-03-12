@@ -3,6 +3,7 @@ body{
     margin: 0;
 }
 
+
 .grid {
     /* Set rules to fill background */
     min-height: 100%;
@@ -17,12 +18,71 @@ body{
     top: 0;
     left: 0;
 
-    background: #00271c;
+    background-color: rgba(19, 55, 0, 0.8);
+    background-image: url("../img/DSC_1721.JPG");
+    background-size: cover;
     color: #cfff00;
     font-family: 'Ubuntu', sans-serif;
     display: grid;
     grid-auto-columns: auto auto;
 }
+.opacityArea{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    opacity: 0.6;
+    transition-duration: 1s;
+    height: 150px;
+}
+.opacityArea:hover{
+    opacity: 1.0;
+}
+
+.topnav{
+    position: relative;
+    top: 0px;
+    background: rgba(64, 19, 3, 0.01);
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.5));
+    background: linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.5));
+    height: 40px;
+}
+
+
+.topnav div{
+    display: inline;
+    float: left;
+}
+
+.topNavButton{
+    background: rgba(64, 19, 3, 0.8);
+    background:    -webkit-linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    background:    linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    padding:       8px 20px;
+    color:         #cfff00;
+    display:       inline-block;
+    font:          normal 700 24px/1 "Calibri", sans-serif;
+    text-align:    center;
+    text-decoration: none;
+}
+.topNavButton:hover{
+    background: rgba(19, 55, 0, 0.8);
+}
+.sidenav{
+    margin-top: 15px;
+}
+.sideNavButton{
+    background:    rgba(64, 19, 3, 0.8);
+    background: linear-gradient(to right, rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    background: -webkit-linear-gradient(to right, rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    padding:       8px 20px;
+    color:         #cfff00;
+    font:          normal 700 24px/1 "Calibri", sans-serif;
+    text-align:    center;
+    text-decoration: none;
+}
+.sideNavButton:hover{
+    background: rgba(64, 19, 3, 0.8);
+}
+
 
 .list{
     grid-column-start: 2;
@@ -40,67 +100,34 @@ body{
 
 
 
-.topnav div{
-    display: inline;
-    float: left;
-}
-.topNavButton{
-    background:    #401303;
-    background:    -webkit-linear-gradient(#401303, #00271c);
-    background:    linear-gradient(#401303, #00271c);
-    padding:       8px 20px;
-    color:         #cfff00;
-    display:       inline-block;
-    font:          normal 700 24px/1 "Calibri", sans-serif;
-    text-align:    center;
-    text-decoration: none;
-}
-.topNavButton:hover{
-    background: #00271c;
-}
-.sidenav{
-    margin-top: 15px;
-}
-.sideNavButton{
-    background:    #401303;
-    background: linear-gradient(to right, #401303, #00271c);
-    background: -webkit-linear-gradient(to right, #401303, #00271c);
-    padding:       8px 20px;
-    color:         #cfff00;
-    font:          normal 700 24px/1 "Calibri", sans-serif;
-    text-align:    center;
-    text-decoration: none;
-}
-.sideNavButton:hover{
-    background: #401303;
-}
+
 .insideButton{
     padding: 8px 20px;
     color: #cfff00;
     font: normal 700 24px/1 "Calibri", sans-serif;
     text-align: center;
     text-decoration: none;
-    background: #401303;
-    background: linear-gradient(#00271c, #401303, #00271c);
-    background: -webkit-linear-gradient(#00271c, #401303, #00271c);
+    background: rgba(64, 19, 3, 0.8);
+    background: linear-gradient(rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    background: -webkit-linear-gradient(rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.81));
     width: 100%;
 }
 .insideButton:hover{
     cursor: pointer;
-    background: #401303;
+    background: rgba(64, 19, 3, 0.8);
 }
 
 .clickRowToUpdate {
-    background: #401303;
-    background: linear-gradient(#00271c, #401303, #00271c);
-    background: -webkit-linear-gradient(#00271c, #401303, #00271c);
+    background: rgba(64, 19, 3, 0.8);
+    background: linear-gradient(rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    background: -webkit-linear-gradient(rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
 }
 .clickRowToUpdate td{
     padding: 8px 20px;
 }
 .clickRowToUpdate:hover{
     cursor: pointer;
-    background: #401303;
+    background: rgba(64, 19, 3, 0.8);
 }
 .dancerDetailed{
     grid-column-start: 2;
@@ -108,34 +135,27 @@ body{
 }
 .dancerDetailed input{
     margin: 10px 0px 10px 0px;
-    background: #00271c;
-    background: linear-gradient(#401303, #00271c, #401303);
-    background: -webkit-linear-gradient(#401303, #00271c, #401303);
+    background: rgba(19, 55, 0, 0.8);
+    background: linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
     border: none;
     color: #cfff00;
     font-size: 1.5em;
     text-align: center;
 }
 .dancerDetailed input:focus{
-    background: #401303;
+    background: rgba(64, 19, 3, 0.8);
 }
 .dancerDetailed label {
     float: left; width: 10em; margin-right: 1em;
     color: rgba(207, 255, 0, 0.6);
 }
-.topnav{
-    grid-column-start: 1;
-    grid-column-end: 3;
-    position: relative;
-    top: 0px;
-    background-color: #401303;
-    height: 40px;
-}
+
 
 .simpleButton{
-    background:    #00271c;
-    background:    -webkit-linear-gradient(#401303, #00271c);
-    background:    linear-gradient(#401303, #00271c);
+    background:    rgba(19, 55, 0, 0.8);
+    background:    -webkit-linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    background:    linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
     border-radius: 5px;
     padding:       8px 20px;
     color:         #cfff00;
@@ -145,12 +165,12 @@ body{
     text-decoration: none;
 }
 .simpleButton:hover{
-    background: #401303;
+    background: rgba(64, 19, 3, 0.8);
 }
 .registerButton{
     background:    #401303;
-    background:    -webkit-linear-gradient(#401303, #00271c);
-    background:    linear-gradient(#401303, #00271c);
+    background:    -webkit-linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
+    background:    linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8));
     border-radius: 5px;
     padding:       8px 20px;
     color:         #cfff00;

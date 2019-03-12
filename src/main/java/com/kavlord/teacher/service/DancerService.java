@@ -1,6 +1,7 @@
 package com.kavlord.teacher.service;
 
 import com.kavlord.teacher.model.Dancer;
+import com.kavlord.teacher.model.Group;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

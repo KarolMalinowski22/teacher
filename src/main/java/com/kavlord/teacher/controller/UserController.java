@@ -26,7 +26,7 @@ public class UserController {
     public String registerForm(Model model){
         UserDto userDto = new UserDto();
         model.addAttribute("user", userDto);
-        return "registerForm";
+        return "forms/registerForm";
     }
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute(name = "user")UserDto userDto, BindingResult bindingResult){

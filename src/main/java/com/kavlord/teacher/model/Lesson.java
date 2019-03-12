@@ -21,4 +21,6 @@ class Lesson {
     private String description;
     @ManyToMany(mappedBy = "presence")
     private List<Dancer> presence;
+    @ManyToMany(mappedBy = "lessons")
+    private List<Teacher> teachers;
 }

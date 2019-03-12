@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity(name = "dancer")
-public class Dancer {
+public class Dancer extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

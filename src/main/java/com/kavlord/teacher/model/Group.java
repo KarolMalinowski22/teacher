@@ -9,17 +9,20 @@ import java.util.List;
 
 @Setter
 @Getter
-@Entity(name = "group")
+@Entity(name = "class")
 public class Group {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String town;
+    private String address;
     private String description;
     @ManyToMany
-    @JoinTable(name = "groups_membership",
-    joinColumns = @JoinColumn(name = "groupId"),
+    @JoinTable(name = "class_membership",
+    joinColumns = @JoinColumn(name = "classId"),
     inverseJoinColumns = @JoinColumn(name = "dancerId"))
     private List<Dancer> dancers;
+    @ManyToMany(mappedBy = "teacherOf")
+    private List<Teacher> teachers;
 }
