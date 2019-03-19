@@ -13,5 +13,6 @@ public class MainController {
     public String goHome(Model model){
         model.addAttribute("groups", groupService.findAll());
         return "home";
+
     }
 }

@@ -27,12 +27,14 @@ public class DancerController {
     public String showAllDancers(Model model){
         model.addAttribute("objectTypeName", "Dancer");
         model.addAttribute("people", dancerService.findAll());
+        model.addAttribute("groups", groupService.findAll());
         return "people.html";
     }
     @RequestMapping("/group")
     public String showGroup(Model model, @ModelAttribute("groupId")Long groupId){
         model.addAttribute("objectTypeName", "Dancer");
         model.addAttribute("people", dancerService.findByGroup(groupService.findById(groupId).get()));
+        model.addAttribute("groups", groupService.findAll());
         return "people.html";
     }
     @RequestMapping("/details")
@@ -41,6 +43,7 @@ public class DancerController {
         if(optionalDancer.isPresent()){
             model.addAttribute("isUpdating", Boolean.TRUE);
             model.addAttribute("dancer", optionalDancer.get());
+            model.addAttribute("groups", groupService.findAll());
             return "dancerDetails";
         }else{
             //todo: displaying error for user

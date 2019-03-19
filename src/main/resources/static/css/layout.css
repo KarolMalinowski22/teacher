@@ -1,8 +1,12 @@
 body{
     padding: 0;
     margin: 0;
+    background-color: rgba(19, 55, 0, 0.8);
+    background-image: url("../img/DSC_1721.JPG");
+    background-size: cover;
+    color: #cfff00;
+    font-family: 'Ubuntu', sans-serif;
 }
-
 
 .grid {
     /* Set rules to fill background */
@@ -18,14 +22,20 @@ body{
     top: 0;
     left: 0;
 
-    background-color: rgba(19, 55, 0, 0.8);
-    background-image: url("../img/DSC_1721.JPG");
-    background-size: cover;
-    color: #cfff00;
-    font-family: 'Ubuntu', sans-serif;
+
     display: grid;
     grid-template-columns: auto 65%;
     grid-template-rows: 150px auto;
+}
+
+
+.topnav{
+    position: relative;
+    top: 0px;
+    background: rgba(64, 19, 3, 0.01);
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.5));
+    background: linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.5));
+    height: 40px;
 }
 .opacityArea{
     grid-column-start: 1;
@@ -37,22 +47,10 @@ body{
 .opacityArea:hover{
     opacity: 1.0;
 }
-
-.topnav{
-    position: relative;
-    top: 0px;
-    background: rgba(64, 19, 3, 0.01);
-    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.5));
-    background: linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.5));
-    height: 40px;
-}
-
-
 .topnav div{
     display: inline;
     float: left;
 }
-
 .topNavButton{
     width: 10em;
     background: rgba(64, 19, 3, 0.8);

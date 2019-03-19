@@ -2,6 +2,7 @@ package com.kavlord.teacher.controller;
 
 import com.kavlord.teacher.model.Person;
 import com.kavlord.teacher.model.Teacher;
+import com.kavlord.teacher.service.GroupService;
 import com.kavlord.teacher.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,13 @@ import java.util.Optional;
 public class TeacherController {
     @Autowired
     TeacherService teacherService;
+    @Autowired
+    GroupService groupService;
     @RequestMapping
     public String teachers(Model model){
         model.addAttribute("objectTypeName", "Teacher");
         model.addAttribute("people", teacherService.findAll());
+        model.addAttribute("groups", groupService.findAll());
         return "people";
     }
     @RequestMapping("/addNewTeacher")
