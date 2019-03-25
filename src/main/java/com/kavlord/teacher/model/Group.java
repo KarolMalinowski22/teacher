@@ -23,6 +23,9 @@ public class Group {
     joinColumns = @JoinColumn(name = "classId"),
     inverseJoinColumns = @JoinColumn(name = "dancerId"))
     private List<Dancer> dancers;
-    @ManyToMany(mappedBy = "teacherOf")
+    @ManyToMany
+    @JoinTable(name = "teacher_class",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "teacherId"))
     private List<Teacher> teachers;
 }

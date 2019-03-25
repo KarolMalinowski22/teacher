@@ -31,4 +31,9 @@ public class TeacherServiceImpl implements TeacherService {
     public Optional<Teacher> findById(Long id) {
         return teacherRepository.findById(id);
     }
+
+    @Override
+    public Optional<Teacher> findByEmail(String email) {
+        return teacherRepository.findByEmail(email);
+    }
 }

@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="dancerDetailed" th:object="${person}">
+    <div class="detailed" th:object="${person}">
         <form th:if="${person.class.name == 'com.kavlord.teacher.model.Dancer'}" id="updateDancer" th:action="@{/dancers/save}" method="post">
             <h1>Dancers</h1>
             <input type="hidden" th:field="*{id}" th:value="*{id}">

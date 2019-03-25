@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="dancerDetailed" th:object="${teacher}">
+    <div class="detailed" th:object="${teacher}">
         <form id="newTeacher" th:action="@{/teachers/save}" method="post">
             <label>imię&nbsp;
                 <input type="text" th:field="*{firstName}" required>

@@ -41,10 +41,9 @@ public class DancerController {
     public String dancerDetailed(Model model, @RequestParam(name = "id")Long id){
         Optional<Dancer> optionalDancer = dancerService.findById(id);
         if(optionalDancer.isPresent()){
-            model.addAttribute("isUpdating", Boolean.TRUE);
-            model.addAttribute("dancer", optionalDancer.get());
+            model.addAttribute("person", optionalDancer.get());
             model.addAttribute("groups", groupService.findAll());
-            return "dancerDetails";
+            return "personDetails";
         }else{
             //todo: displaying error for user
             return "redirect:/dancers";

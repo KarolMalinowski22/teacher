@@ -140,11 +140,12 @@ body{
     cursor: pointer;
     background: rgba(64, 19, 3, 0.8);
 }
-.dancerDetailed{
+.detailed{
     grid-column-start: 2;
-    width: 300px;
+    width: 30em;
 }
-.dancerDetailed input{
+
+.detailed input{
     margin: 10px 0px 10px 0px;
     background: rgba(19, 55, 0, 0.8);
     background: linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
@@ -153,13 +154,15 @@ body{
     color: #cfff00;
     font-size: 1.5em;
     text-align: center;
+    width: 30em;
 }
-.dancerDetailed input:focus{
+.detailed input:focus{
     background: rgba(64, 19, 3, 0.8);
 }
-.dancerDetailed label {
+.detailed label, .detailed select{
     float: left; width: 10em; margin-right: 1em;
     color: rgba(207, 255, 0, 0.6);
+    width: 100%;
 }
 
 

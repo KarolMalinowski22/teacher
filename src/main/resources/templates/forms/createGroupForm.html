@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="dancerDetailed" th:object="${group}">
+    <div class="detailed" th:object="${group}">
         <form id="newGroup" th:action="@{/dancers/saveGroup}" method="post">
             <label>nazwa&nbsp;
                 <input type="text" th:field="*{name}" required>

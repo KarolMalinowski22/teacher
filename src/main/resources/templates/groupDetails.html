@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+    <link href="../static/css/selectize.css" th:href="@{/css/selectize.css}" rel="stylesheet"/>
     <link href="../static/css/layout.css" th:href="@{/css/layout.css}" rel="stylesheet"/>
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}" defer></script>
+    <script type="text/javascript" th:src="@{/js/selectize.min.js}" defer></script>
+    <script type="text/javascript" th:src="@{/js/script.js}" defer></script>
 </head>
 <title>Details</title>
 <body>
@@ -29,30 +34,43 @@
             </div>
         </div>
     </div>
-    <!--todo: change name of this "dancerDetails" class-->
-    <div class="dancerDetailed" th:object="${group}">
-        <form id="updateGroup" th:action="@{/dancers/save}" method="post">
-            <h1>Dancers</h1>
+    <div class="detailed" th:object="${group}">
+        <form id="updateGroup" th:action="@{/groups/save}" method="post">
+            <h1>Grupa</h1>
             <input type="hidden" th:field="*{id}" th:value="*{id}">
-            <label>imię&nbsp;
-                <input type="text" th:field="*{firstName}" th:value="*{firstName}">
+            <label>nazwa&nbsp;
+                <input type="text" th:field="*{name}" th:value="*{name}">
             </label>
-            <label>nazwisko&nbsp;
-                <input type="text" th:field="*{lastName}" th:value="*{lastName}">
+            <label>miasto&nbsp;
+                <input type="text" th:field="*{town}" th:value="*{town}">
             </label>
-            <label>numer&nbsp;
-                <input type="text" th:field="*{phoneNumber}" th:value="*{phoneNumber}">
+            <label>adres&nbsp;
+                <input type="text" th:field="*{address}" th:value="*{address}">
             </label>
-            <label>email&nbsp;
-                <input type="text" th:field="*{email}" th:value="*{email}">
+            <label>opis&nbsp;
+                <input type="text" th:field="*{description}" th:value="*{description}">
             </label>
+
+            <ul style="list-style-type: none; padding-top: 20em; padding-left: 0; width: 100%;" th:unless="*{teachers.size() == 0}">
+                <li style="padding-bottom: 15px">nauczyciel&nbsp;</li>
+                <li th:each="teacher : *{teachers}"><a class="insideButton" th:text="${teacher.firstName + ' ' + teacher.lastName}" th:href="@{/teachers/details/(id=${teacher.id})}"></a><a class="insideButton" th:href="@{/groups/removeTeacher/(teachersId=${teacher.id})}">usuń z grupy</a></li>
+            </ul>
+            <div>
+                <label for="select-unlocked">Dodaj nauczyciela</label>
+                <select id="select-unlocked" multiple placeholder="Wybierz z listy...">
+                    <option th:each="teacher : ${allTeachers}" th:unless="${group.teachers.contains(teacher)}" th:value="${teacher.email}" th:text="${teacher.firstName + ' ' + teacher.lastName}"></option>
+                </select>
+            </div>
+
+            <p>Jeśli nie ma nauczyciela w sugerowanych, stwórz nowego.</p>
+
             <!--todo: edytowanie grup-->
         </form>
     </div>
     <div style="grid-column-start: 2; padding-top: 20px;">
         <a class="insideButton" href="#" onclick="document.getElementById('updateGroup').submit()"
            style="grid-column-start: 2">Zmień</a>
-        <a class="insideButton" th:href="@{/dancers/delete(id=${group.id})}"
+        <a class="insideButton" th:href="@{/groups/delete(id=${group.id})}"
            style="grid-column-start: 2">Usuń</a>
     </div>
 </div>

@@ -83,6 +83,18 @@
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
             <version>3.0.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/selectize.js -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>selectize.js</artifactId>
+            <version>0.11.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -14,4 +14,6 @@ public interface TeacherService {
     void delete(Teacher person);
 
     Optional<Teacher> findById(Long id);
+
+    Optional<Teacher> findByEmail(String email);
 }

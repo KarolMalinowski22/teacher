@@ -14,10 +14,8 @@ import java.util.List;
 @Setter
 @Entity(name = "teacher")
 public class Teacher extends Person{
-    @ManyToMany
-    @JoinTable(name = "teacher_class",
-            joinColumns = @JoinColumn(name = "teacherId"),
-            inverseJoinColumns = @JoinColumn(name = "classId"))
+    @ManyToMany(mappedBy = "teachers")
+
     private List<Group> teacherOf;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "teacher_lesson",
