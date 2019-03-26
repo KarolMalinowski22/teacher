@@ -18,10 +18,7 @@ public class Group {
     private String town;
     private String address;
     private String description;
-    @ManyToMany
-    @JoinTable(name = "class_membership",
-    joinColumns = @JoinColumn(name = "classId"),
-    inverseJoinColumns = @JoinColumn(name = "dancerId"))
+    @ManyToMany(mappedBy = "groups")
     private List<Dancer> dancers;
     @ManyToMany
     @JoinTable(name = "teacher_class",

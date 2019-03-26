@@ -1,7 +1,8 @@
-package com.kavlord.teacher.service;
+package com.kavlord.teacher.service.defaultImplementations;
 
 import com.kavlord.teacher.model.Teacher;
 import com.kavlord.teacher.repository.TeacherRepository;
+import com.kavlord.teacher.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

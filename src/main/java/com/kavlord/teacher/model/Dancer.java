@@ -26,7 +26,10 @@ public class Dancer extends Person{
     private String phoneNumber;
     @Email
     private String email;
-    @ManyToMany(mappedBy = "dancers")
+    @ManyToMany
+    @JoinTable(name = "class_membership",
+            joinColumns = @JoinColumn(name = "dancerId"),
+            inverseJoinColumns = @JoinColumn(name = "classId"))
     private List<Group> groups;
     @ManyToMany
     @JoinTable(name = "presence",

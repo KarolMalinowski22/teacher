@@ -1,9 +1,12 @@
-package com.kavlord.teacher.service;
+package com.kavlord.teacher.service.defaultImplementations;
 
 import com.kavlord.teacher.model.Group;
 import com.kavlord.teacher.model.Person;
 import com.kavlord.teacher.model.Teacher;
 import com.kavlord.teacher.repository.GroupRepository;
+import com.kavlord.teacher.service.GroupService;
+import com.kavlord.teacher.service.TeacherService;
+import com.kavlord.teacher.service.utils.EmailValidator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +43,7 @@ public class GroupServiceImpl implements GroupService {
             saveGroup(group);
         } else {
             String email = StringUtils.substringBetween(addTeacher, "(", ")");
+            if(!EmailValidator.isEmail(email)) throw new IllegalArgumentException("Wygląda na to, że email nauczyciela jest niepoprawny.");
             teacherService.findByEmail(email).ifPresent(e -> {
                 List<Teacher> teachers = group.getTeachers();
                 if (teachers == null) {

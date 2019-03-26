@@ -1,8 +1,9 @@
-package com.kavlord.teacher.service;
+package com.kavlord.teacher.service.defaultImplementations;
 
 import com.kavlord.teacher.model.User;
 import com.kavlord.teacher.model.dto.UserDto;
 import com.kavlord.teacher.repository.UserRepository;
+import com.kavlord.teacher.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImplementation implements UserService{
+public class UserServiceImplementation implements UserService {
     @Autowired
     UserRepository userRepository;
     @Autowired

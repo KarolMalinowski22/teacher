@@ -1,8 +1,9 @@
-package com.kavlord.teacher.service;
+package com.kavlord.teacher.service.defaultImplementations;
 
 import com.kavlord.teacher.model.Dancer;
 import com.kavlord.teacher.model.Group;
 import com.kavlord.teacher.repository.DancerRepository;
+import com.kavlord.teacher.service.DancerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
