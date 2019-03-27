@@ -35,30 +35,36 @@ public class GroupController {
     @RequestMapping("/details")
     public String showGroupDetails(@ModelAttribute("id") Long id, Model model){
 
-        model.addAttribute("allTeachers", teacherService.findAll());
-        model.addAttribute("groups", groupService.findAll());
+        editGroup(model, groupService.findById(id).get());
 
-        model.addAttribute("group", groupService.findById(id).get());
-        model.addAttribute("groupDto", new GroupDto());
-
-        model.addAttribute("teachersToAddList", new ArrayList<Teacher>());
-        model.addAttribute("teachersToRemoveList", new ArrayList<Teacher>());
+        return "groupDetails";
+    }
+    @RequestMapping("/addGroup")
+    public String addGroup(Model model){
+        editGroup(model, new Group());
 
         return "groupDetails";
     }
     @RequestMapping("/save")
-    public String saveGroup(@ModelAttribute("teacherChoice") String[] teacherChoice,
-                            @ModelAttribute("teacherTransporter") String teacherTransporter,
+    public String saveGroup(@ModelAttribute("teacherTransporter") String teacherTransporter,
                             @ModelAttribute("group") Group group,
                             @ModelAttribute("groupDto") GroupDto groupDto,
-                            @ModelAttribute("addTeacher") String addTeacher, Model model){
-//todo: teacher choice should contain all values from multiple select, but it contains only first one
-        groupService.saveGroup(group, addTeacher);
+                            Model model){
+        groupService.saveGroup(groupDto);
         return "redirect:/groups";
     }
+
     @RequestMapping("/delete")
     public String delete(@ModelAttribute("id") Long id){
         groupService.delete(id);
         return "redirect:/groups";
+    }
+
+    private void editGroup(Model model, Group group){
+        model.addAttribute("allTeachers", teacherService.findAll());
+        model.addAttribute("groups", groupService.findAll());
+
+        model.addAttribute("group", group);
+        model.addAttribute("groupDto", new GroupDto());
     }
 }

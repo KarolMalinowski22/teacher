@@ -38,9 +38,7 @@
     </div>
     <div class="detailed" th:object="${groupDto}">
         <form id="updateGroup" th:action="@{/groups/save}" method="post">
-            <table>
-                <tr>
-                    <td>
+
                     <div>
                         <h1>Grupa</h1>
                         <input type="hidden" th:field="${group.id}">
@@ -56,28 +54,21 @@
                         <label>adres&nbsp;
                             <input type="text" th:field="${group.address}">
                         </label>
-
                     </div>
+
                         <label for="teacherChoice">Dodaj nauczyciela</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
                     <div>
                         <select multiple class="chosen-select" name="teacherChoice" id="teacherChoice">
                             <option th:each="teacher:${allTeachers}" th:value="${teacher.id}" th:text="${teacher.firstName}" th:selected="${#lists.contains(group.teachers, teacher)}"></option>
                         </select>
-                        <input type="hidden" id="teachersTransporter">
+                        <input th:field="*{teachers}" type="hidden" id="teachersTransporter" name="teachersTransporter">
                     </div>
-                    </td>
-                </tr>
-            </table>
 
-            <!--todo: edytowanie grup-->
         </form>
     </div>
     <div style="grid-column-start: 2; padding-top: 20px;">
-        <a class="insideButton" href="#" onclick="document.getElementById('updateGroup').submit()"
+        <a class="insideButton" href="#" onclick="processGroupDto('updateGroup')"
            style="grid-column-start: 2">Zmień</a>
         <a class="insideButton" th:href="@{/groups/delete(id=${group.id})}"
            style="grid-column-start: 2">Usuń</a>

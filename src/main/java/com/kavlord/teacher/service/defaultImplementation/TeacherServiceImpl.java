@@ -1,4 +1,4 @@
-package com.kavlord.teacher.service.defaultImplementations;
+package com.kavlord.teacher.service.defaultImplementation;
 
 import com.kavlord.teacher.model.Teacher;
 import com.kavlord.teacher.repository.TeacherRepository;

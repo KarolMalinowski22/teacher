@@ -1,4 +1,4 @@
-package com.kavlord.teacher.service.defaultImplementations;
+package com.kavlord.teacher.service.defaultImplementation;
 
 import com.kavlord.teacher.model.User;
 import com.kavlord.teacher.model.dto.UserDto;
@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.expression.Lists;
 
 import java.util.Collections;
 import java.util.List;

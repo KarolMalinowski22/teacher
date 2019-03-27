@@ -16,13 +16,9 @@ public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    @NotEmpty
     private String firstName;
-    @NotEmpty
     private String lastName;
     private Date birthDate;
     private String phoneNumber;
-    @Email
     private String email;
 }

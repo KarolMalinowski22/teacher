@@ -43,7 +43,9 @@
 
 
     <div class="sidenav">
-
+        <div sec:authorize="hasAnyRole('ROLE_TEACHER', 'ROLE_ADMIN')">
+            <a class="sideNavButton" href="/groups/addGroup">Dodaj grupę</a>
+        </div>
     </div>
 
 

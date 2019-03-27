@@ -16,7 +16,7 @@
                 <a class="topNavButton" href="/users">Użytkownicy</a>
             </div>
 
-            <div sec:authorize="hasAnyRole('ROLE_TEACHER')" class="expandable">
+            <div th:if="${objectTypeName.equals('Teacher')}" sec:authorize="hasAnyRole('ROLE_TEACHER')" class="expandable">
                 <a th:href="@{/dancers}" class="topNavButton">Tancerze</a>
                 <ul>
                     <li th:each="group : ${groups}" th:object="${group}"><a th:text="*{name}" class="topNavButton" th:href="@{/dancers/group(groupId = *{id})}"></a></li>
@@ -49,8 +49,8 @@
     </div>
 
     <div class="list">
-        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Teacher')}">Nauczyciele</h1>
-        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Dancer')}">Tancerze</h1>
+        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Teacher')}">Nauczyciel</h1>
+        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Dancer')}">Tancerz</h1>
         <table cellspacing="0">
             <tr>
                 <th>imię</th>
@@ -61,9 +61,9 @@
                 <td th:text="*{firstName}"></td>
                 <td th:text="*{lastName}"></td>
                 <td th:text="*{phoneNumber}"></td>
-                <td th:if="${person.class.name == 'com.kavlord.teacher.model.Dancer'}" style="display: none"><a th:href="@{/dancers/details(id=*{id})}"></a></td>
+                <td th:if="${objectTypeName.equals('Teacher')}" style="display: none"><a th:href="@{/dancers/details(id=*{id})}"></a></td>
                 <!--or-->
-                <td th:if="${person.class.name == 'com.kavlord.teacher.model.Teacher'}" style="display: none"><a th:href="@{/teachers/details(id=*{id})}"></a></td>
+                <td th:if="${objectTypeName.equals('Dancer')}" style="display: none"><a th:href="@{/teachers/details(id=*{id})}"></a></td>
             </tr>
         </table>
     </div>

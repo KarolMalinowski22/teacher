@@ -1,19 +1,21 @@
-package com.kavlord.teacher.service.defaultImplementations;
+package com.kavlord.teacher.service.defaultImplementation;
 
 import com.kavlord.teacher.model.Group;
 import com.kavlord.teacher.model.Person;
 import com.kavlord.teacher.model.Teacher;
+import com.kavlord.teacher.model.dto.GroupDto;
 import com.kavlord.teacher.repository.GroupRepository;
 import com.kavlord.teacher.service.GroupService;
 import com.kavlord.teacher.service.TeacherService;
-import com.kavlord.teacher.service.utils.EmailValidator;
-import org.apache.commons.lang3.StringUtils;
+import com.kavlord.teacher.service.utils.DtoExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GroupServiceImpl implements GroupService {
@@ -38,22 +40,8 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void saveGroup(Group group, String addTeacher) {
-        if ("".equals(addTeacher)) {
-            saveGroup(group);
-        } else {
-            String email = StringUtils.substringBetween(addTeacher, "(", ")");
-            if(!EmailValidator.isEmail(email)) throw new IllegalArgumentException("Wygląda na to, że email nauczyciela jest niepoprawny.");
-            teacherService.findByEmail(email).ifPresent(e -> {
-                List<Teacher> teachers = group.getTeachers();
-                if (teachers == null) {
-                    teachers = new ArrayList<>();
-                }
-                teachers.add(e);
-                group.setTeachers(teachers);
-            });
-            saveGroup(group);
-        }
+    public void saveGroup(Group group, String teacherTransporter) {
+
     }
 
     @Override
@@ -71,6 +59,23 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void addPerson(Group group, Person person) {
 
+    }
+
+    @Override
+    public void saveGroup(GroupDto groupDto) {
+        String teachersString = groupDto.getTeachers();
+
+        List<Teacher> teachers = new ArrayList<>();
+        if(!"".equals(teachersString)) {
+            teachers = Arrays.stream(teachersString.split(","))
+                    .map(_string -> Long.valueOf(_string))
+                    .map(_long -> teacherService.findById(_long))
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
+                    .collect(Collectors.toList());
+        }
+        Group group = DtoExtractor.getGroup(groupDto, teachers);
+        saveGroup(group);
     }
 
     private void removeTeacher(Group group, Teacher teacher){

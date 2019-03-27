@@ -14,5 +14,5 @@ public class GroupDto {
     private String town;
     private String address;
     private String description;
-    private List<Teacher> teachers;
+    private String teachers;
 }
