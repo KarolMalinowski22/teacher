@@ -2,6 +2,7 @@ package com.kavlord.teacher.service;
 
 import com.kavlord.teacher.model.Dancer;
 import com.kavlord.teacher.model.Group;
+import com.kavlord.teacher.model.dto.PersonDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface DancerService {
 
     Optional<Dancer> findById(Long id);
 
-    void save(Dancer dancer);
+    void save(PersonDto personDto);
 
     void delete(Long id);
 

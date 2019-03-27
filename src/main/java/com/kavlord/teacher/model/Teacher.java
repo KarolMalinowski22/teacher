@@ -16,7 +16,7 @@ import java.util.List;
 public class Teacher extends Person{
     @ManyToMany(mappedBy = "teachers")
 
-    private List<Group> teacherOf;
+    private List<Group> groups;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "teacher_lesson",
             joinColumns = @JoinColumn(name = "teacherId"),

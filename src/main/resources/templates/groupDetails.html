@@ -56,10 +56,10 @@
                         </label>
                     </div>
 
-                        <label for="teacherChoice">Dodaj nauczyciela</label>
+                        <label for="choice">Dodaj nauczyciela</label>
 
                     <div>
-                        <select multiple class="chosen-select" name="teacherChoice" id="teacherChoice">
+                        <select multiple class="chosen-select" name="choice" id="choice">
                             <option th:each="teacher:${allTeachers}" th:value="${teacher.id}" th:text="${teacher.firstName}" th:selected="${#lists.contains(group.teachers, teacher)}"></option>
                         </select>
                         <input th:field="*{teachers}" type="hidden" id="teachersTransporter" name="teachersTransporter">
@@ -68,7 +68,7 @@
         </form>
     </div>
     <div style="grid-column-start: 2; padding-top: 20px;">
-        <a class="insideButton" href="#" onclick="processGroupDto('updateGroup')"
+        <a class="insideButton" href="#" onclick="processDto('updateGroup')"
            style="grid-column-start: 2">Zmień</a>
         <a class="insideButton" th:href="@{/groups/delete(id=${group.id})}"
            style="grid-column-start: 2">Usuń</a>

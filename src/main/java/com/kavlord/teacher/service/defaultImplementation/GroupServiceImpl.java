@@ -8,8 +8,10 @@ import com.kavlord.teacher.repository.GroupRepository;
 import com.kavlord.teacher.service.GroupService;
 import com.kavlord.teacher.service.TeacherService;
 import com.kavlord.teacher.service.utils.DtoExtractor;
+import com.kavlord.teacher.service.utils.GroupMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,22 +60,14 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public void addPerson(Group group, Person person) {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public void saveGroup(GroupDto groupDto) {
-        String teachersString = groupDto.getTeachers();
+        String teachersIdsString = groupDto.getTeachers();
 
-        List<Teacher> teachers = new ArrayList<>();
-        if(!"".equals(teachersString)) {
-            teachers = Arrays.stream(teachersString.split(","))
-                    .map(_string -> Long.valueOf(_string))
-                    .map(_long -> teacherService.findById(_long))
-                    .filter(Optional::isPresent)
-                    .map(Optional::get)
-                    .collect(Collectors.toList());
-        }
+        List<Teacher> teachers = GroupMap.fromIds(teachersIdsString, teacherService);
         Group group = DtoExtractor.getGroup(groupDto, teachers);
         saveGroup(group);
     }

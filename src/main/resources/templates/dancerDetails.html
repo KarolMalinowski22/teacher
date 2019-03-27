@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+    <link rel="stylesheet" href="../static/css/chosen.min.css" th:href="@{/css/chosen.min.css}">
     <link href="../static/css/layout.css" th:href="@{/css/layout.css}" rel="stylesheet"/>
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}" defer></script>
+    <script type="text/javascript" th:src="@{/js/script.js}" defer></script>
+    <script type="text/javascript" th:src="@{/js/chosen.jquery.min.js}" defer></script>
 </head>
 <title>Details</title>
 <body>
@@ -47,59 +52,23 @@
             </label>
 
 
-            <label for="teacherChoice">Dodaj nauczyciela</label>
+            <label for="choice">Dodaj nauczyciela</label>
 
             <div>
-                <select multiple class="chosen-select" name="teacherChoice" id="teacherChoice">
+                <select multiple class="chosen-select" name="choice" id="choice">
                     <option th:each="group:${allGroups}" th:value="${group.id}" th:text="${group.name}" th:selected="${#lists.contains(person.groups, group)}"></option>
                 </select>
-                <input th:field="*{groups}" type="hidden" id="transporter" name="transporter">
+                <input th:field="*{groupsDto}" type="hidden" id="transporter" name="transporter">
             </div>
 
 
         </form>
 
-
-
-        <form th:if="${person.class.name == 'com.kavlord.teacher.model.Teacher'}" id="updateTeacher" th:action="@{/teachers/save}" method="post">
-            <h1>Teachers</h1>
-            <input type="hidden" th:field="${person.id}">
-            <label>imię&nbsp;
-                <input type="text" th:field="${person.firstName}">
-            </label>
-            <label>nazwisko&nbsp;
-                <input type="text" th:field="${person.lastName}">
-            </label>
-            <label>numer&nbsp;
-                <input type="text" th:field="${person.phoneNumber}">
-            </label>
-            <label>email&nbsp;
-                <input type="text" th:field="${person.email}">
-            </label>
-
-
-            <label for="teacherChoice">Dodaj nauczyciela</label>
-
-            <div>
-                <select multiple class="chosen-select" name="teacherChoice" id="teacherChoice">
-                    <option th:each="group:${allGroups}" th:value="${group.id}" th:text="${group.name}" th:selected="${#lists.contains(person.groups, group)}"></option>
-                </select>
-                <input th:field="*{groups}" type="hidden" id="transporter" name="transporter">
-            </div>
-
-
-        </form>
     </div>
     <div th:if="${person.class.name == 'com.kavlord.teacher.model.Dancer'}" style="grid-column-start: 2; padding-top: 20px;">
-        <a class="insideButton" href="#" onclick="document.getElementById('updateDancer').submit()"
+        <a class="insideButton" href="#" onclick="processDto('updateDancer')"
            style="grid-column-start: 2">Zmień</a>
         <a class="insideButton" th:href="@{/dancers/delete(id=${person.id})}"
-           style="grid-column-start: 2">Usuń</a>
-    </div>
-    <div th:if="${person.class.name == 'com.kavlord.teacher.model.Teacher'}" style="grid-column-start: 2; padding-top: 20px;">
-        <a class="insideButton" href="#" onclick="document.getElementById('updateTeacher').submit()"
-           style="grid-column-start: 2">Zmień</a>
-        <a class="insideButton" th:href="@{/teachers/delete(id=${person.id})}"
            style="grid-column-start: 2">Usuń</a>
     </div>
 </div>

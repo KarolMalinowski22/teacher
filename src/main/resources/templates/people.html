@@ -61,9 +61,9 @@
                 <td th:text="*{firstName}"></td>
                 <td th:text="*{lastName}"></td>
                 <td th:text="*{phoneNumber}"></td>
-                <td th:if="${objectTypeName.equals('Teacher')}" style="display: none"><a th:href="@{/dancers/details(id=*{id})}"></a></td>
+                <td th:if="${objectTypeName.equals('Teacher')}" style="display: none"><a th:href="@{/teachers/details(id=*{id})}"></a></td>
                 <!--or-->
-                <td th:if="${objectTypeName.equals('Dancer')}" style="display: none"><a th:href="@{/teachers/details(id=*{id})}"></a></td>
+                <td th:if="${objectTypeName.equals('Dancer')}" style="display: none"><a th:href="@{/dancers/details(id=*{id})}"></a></td>
             </tr>
         </table>
     </div>

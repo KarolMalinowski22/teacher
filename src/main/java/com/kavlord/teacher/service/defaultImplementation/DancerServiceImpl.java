@@ -2,8 +2,12 @@ package com.kavlord.teacher.service.defaultImplementation;
 
 import com.kavlord.teacher.model.Dancer;
 import com.kavlord.teacher.model.Group;
+import com.kavlord.teacher.model.dto.PersonDto;
 import com.kavlord.teacher.repository.DancerRepository;
 import com.kavlord.teacher.service.DancerService;
+import com.kavlord.teacher.service.GroupService;
+import com.kavlord.teacher.service.utils.DancerMap;
+import com.kavlord.teacher.service.utils.DtoExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -15,6 +19,9 @@ import java.util.Optional;
 public class DancerServiceImpl implements DancerService {
     @Autowired
     DancerRepository dancerRepository;
+    @Autowired
+    GroupService groupService;
+
     @Override
     public List<Dancer> findAll() {
         return dancerRepository.findAll();
@@ -26,7 +33,7 @@ public class DancerServiceImpl implements DancerService {
     }
 
     @Override
-    public List<Dancer> findAllActive(){
+    public List<Dancer> findAllActive() {
         throw new NotImplementedException();
     }
 
@@ -41,11 +48,23 @@ public class DancerServiceImpl implements DancerService {
     }
 
     @Override
-    public void save(Dancer dancer) {
+    public void save(PersonDto personDto) {
+        String groupsIdsString = personDto.getGroupsDto();
+
+        List<Group> groups = DancerMap.fromIds(groupsIdsString, groupService);
+        Dancer dancer = DtoExtractor.getDancer(personDto, groups);
+
+        findById(personDto.getId())
+                .ifPresent(e -> {
+            dancer.setPresence(e.getPresence());
+            dancer.setUser(e.getUser());
+        });
+
         dancerRepository.save(dancer);
     }
+
     @Override
-    public void delete(Long id){
+    public void delete(Long id) {
         dancerRepository.deleteById(id);
     }
 }

@@ -16,35 +16,35 @@ jQuery(document).ready(function ($) {
 
     //multiselect boxes - to extract
 
-    $("#teacherChoice").chosen().change(function(e, params) {
+    $("#choice").chosen().change(function(e, params) {
         console.log("inside function to change 'values'");
 
-        values = $("#teacherChoice").chosen().val();
+        values = $("#choice").chosen().val();
         //values is an array containing all the results.
     });
 
-    $("#teacherChoice").chosen().ready(function(e, params){
+    $("#choice").chosen().ready(function(e, params){
         console.log("inside first function to change 'values'");
 
-        values = $("#teacherChoice").chosen().val();
+        values = $("#choice").chosen().val();
         console.log(values);
         //values is an array containing all the results.
     });
 
-    $('#teacherChoice').chosen(console.log("weszłem"));
+    $('#choice').chosen(console.log("weszłem"));
 
 
 
 
 });
-function processGroupDto(formId)
+function processDto(formId)
 {
-    var teachersTransporter = document.getElementById("teachersTransporter");
+    var transporter = document.getElementById("transporter");
 
-    teachersTransporter.value = values;
+    transporter.value = values;
 
-    console.log(teachersTransporter.value);
+    console.log(transporter.value);
 
-    document.getElementById('updateGroup').submit();
+    document.getElementById(formId).submit();
 }
 

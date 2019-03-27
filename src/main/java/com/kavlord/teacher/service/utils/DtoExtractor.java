@@ -1,8 +1,10 @@
 package com.kavlord.teacher.service.utils;
 
+import com.kavlord.teacher.model.Dancer;
 import com.kavlord.teacher.model.Group;
 import com.kavlord.teacher.model.Teacher;
 import com.kavlord.teacher.model.dto.GroupDto;
+import com.kavlord.teacher.model.dto.PersonDto;
 
 import java.util.List;
 
@@ -22,5 +24,24 @@ public class DtoExtractor {
         group.setTown(groupDto.getTown());
         group.setTeachers(teachers);
         return group;
+    }
+
+    /**
+     *
+     * @param personDto
+     * @param groups is List of teachers extracted from groupDto.teachers String
+     * @return
+     */
+    public static Dancer getDancer(PersonDto personDto, List<Group> groups){
+        Dancer dancer = new Dancer();
+        dancer.setFirstName(personDto.getFirstName());
+        dancer.setLastName(personDto.getLastName());
+        dancer.setId(personDto.getId());
+        dancer.setEmail(personDto.getEmail());
+        dancer.setPhoneNumber(personDto.getPhoneNumber());
+        dancer.setGroups(groups);
+        dancer.setBirthDate(personDto.getBirthDate());
+        //todo: manage the rest of the fields in Dancer, such as User or Presence
+        return dancer;
     }
 }

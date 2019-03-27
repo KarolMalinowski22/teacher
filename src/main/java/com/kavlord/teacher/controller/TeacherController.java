@@ -1,8 +1,8 @@
 package com.kavlord.teacher.controller;
 
 import com.kavlord.teacher.model.Group;
-import com.kavlord.teacher.model.Person;
 import com.kavlord.teacher.model.Teacher;
+import com.kavlord.teacher.model.dto.PersonDto;
 import com.kavlord.teacher.service.GroupService;
 import com.kavlord.teacher.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,9 @@ public class TeacherController {
     @RequestMapping("/details")
     public String detailed(@ModelAttribute("id")Long id, Model model){
         model.addAttribute("person", teacherService.findById(id).get());
-        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("allGroups", groupService.findAll());
+        model.addAttribute("personDto", new PersonDto());
+
         return "personDetails";
     }
     @RequestMapping("/addNewTeacher")

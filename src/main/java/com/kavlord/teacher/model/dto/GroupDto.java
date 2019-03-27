@@ -1,11 +1,7 @@
 package com.kavlord.teacher.model.dto;
 
-import com.kavlord.teacher.model.Dancer;
-import com.kavlord.teacher.model.Teacher;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 @Getter
 @Setter
 public class GroupDto {
