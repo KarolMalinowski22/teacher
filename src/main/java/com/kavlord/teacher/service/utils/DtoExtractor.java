@@ -41,7 +41,18 @@ public class DtoExtractor {
         dancer.setPhoneNumber(personDto.getPhoneNumber());
         dancer.setGroups(groups);
         dancer.setBirthDate(personDto.getBirthDate());
-        //todo: manage the rest of the fields in Dancer, such as User or Presence
         return dancer;
+    }
+
+    public static Teacher getTeacher(PersonDto personDto, List<Group> groups) {
+        Teacher teacher = new Teacher();
+        teacher.setFirstName(personDto.getFirstName());
+        teacher.setLastName(personDto.getLastName());
+        teacher.setId(personDto.getId());
+        teacher.setEmail(personDto.getEmail());
+        teacher.setPhoneNumber(personDto.getPhoneNumber());
+        teacher.setGroups(groups);
+        teacher.setBirthDate(personDto.getBirthDate());
+        return teacher;
     }
 }

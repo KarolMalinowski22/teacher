@@ -28,6 +28,20 @@ body{
     grid-template-rows: 150px auto;
 }
 
+.title{
+    margin-bottom: 1em;
+    font-size: 2em;
+    background: rgba(64, 19, 3, 0.01);
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.7), rgba(64, 19, 3, 0.01));
+    background: linear-gradient(rgba(64, 19, 3, 0.7), rgba(64, 19, 3, 0.01));
+}
+th{
+    background: rgba(64, 19, 3, 0.01);
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.7));
+    background: linear-gradient(rgba(64, 19, 3, 0.01), rgba(64, 19, 3, 0.7));
+
+}
+
 
 .topnav{
     position: relative;
@@ -97,6 +111,7 @@ body{
 
 .list{
     grid-column-start: 2;
+    grid-column-end: 3;
 
 }
 .list td{

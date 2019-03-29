@@ -6,7 +6,7 @@ import com.kavlord.teacher.model.dto.PersonDto;
 import com.kavlord.teacher.repository.DancerRepository;
 import com.kavlord.teacher.service.DancerService;
 import com.kavlord.teacher.service.GroupService;
-import com.kavlord.teacher.service.utils.DancerMap;
+import com.kavlord.teacher.service.utils.PersonMap;
 import com.kavlord.teacher.service.utils.DtoExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,14 +44,14 @@ public class DancerServiceImpl implements DancerService {
 
     @Override
     public Optional<Dancer> findById(Long id) {
-        return dancerRepository.findById(id);
+        return id == null ? Optional.empty() : dancerRepository.findById(id);
     }
 
     @Override
     public void save(PersonDto personDto) {
         String groupsIdsString = personDto.getGroupsDto();
 
-        List<Group> groups = DancerMap.fromIds(groupsIdsString, groupService);
+        List<Group> groups = PersonMap.fromIds(groupsIdsString, groupService);
         Dancer dancer = DtoExtractor.getDancer(personDto, groups);
 
         findById(personDto.getId())

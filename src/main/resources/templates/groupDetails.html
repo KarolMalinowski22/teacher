@@ -17,16 +17,8 @@
             <div>
                 <a class="topNavButton" href="/">Strona główna</a>
             </div>
-            <div sec:authorize="hasAnyRole('ROLE_TEACHER')" class="expandable">
-                <a th:href="@{/dancers}" class="topNavButton">Tancerze</a>
-                <ul>
-                    <li th:each="group : ${groups}" th:object="${group}"><a th:text="*{name}" class="topNavButton"
-                                                                            th:href="@{/dancers/group(groupId = *{id})}"></a>
-                    </li>
-                </ul>
-            </div>
             <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
-                <a class="topNavButton" href="/users">Użytkownicy</a>
+                <a class="topNavButton" href="/groups">Grupy</a>
             </div>
             <div style="float: right;" sec:authorize="isAnonymous()">
                 <a class="topNavButton" href="/login">Zaloguj</a>
@@ -62,7 +54,7 @@
                         <select multiple class="chosen-select" name="choice" id="choice">
                             <option th:each="teacher:${allTeachers}" th:value="${teacher.id}" th:text="${teacher.firstName}" th:selected="${#lists.contains(group.teachers, teacher)}"></option>
                         </select>
-                        <input th:field="*{teachers}" type="hidden" id="teachersTransporter" name="teachersTransporter">
+                        <input th:field="*{teachers}" type="hidden" id="transporter" name="transporter">
                     </div>
 
         </form>

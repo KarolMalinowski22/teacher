@@ -12,9 +12,6 @@
             <div>
                 <a class="topNavButton" href="/">Strona główna</a>
             </div>
-            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
-                <a class="topNavButton" href="/users">Użytkownicy</a>
-            </div>
 
             <div th:if="${objectTypeName.equals('Teacher')}" sec:authorize="hasAnyRole('ROLE_TEACHER')" class="expandable">
                 <a th:href="@{/dancers}" class="topNavButton">Tancerze</a>
@@ -25,6 +22,12 @@
             <!--or-->
             <div th:if="${objectTypeName.equals('Dancer')}" sec:authorize="hasAnyRole('ROLE_ADMIN')">
                 <a class="topNavButton" href="/teachers">Nauczyciele</a>
+            </div>
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a class="topNavButton" href="/groups">Grupy</a>
+            </div>
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a class="topNavButton" href="/users">Użytkownicy</a>
             </div>
 
             <div style="float: right;" sec:authorize="isAnonymous()">
@@ -47,11 +50,16 @@
         </div>
 
     </div>
-
     <div class="list">
-        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Teacher')}">Nauczyciel</h1>
-        <h1 style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Dancer')}">Tancerz</h1>
+        <h2 th:if="${errorMessage!=null}" th:text="${errorMessage}"></h2>
+        <select id="groupId" onchange="if (this.value) window.location.href='/dancers/filter/' + this.value">
+            <option th:value="0" th:text="${'Pokaż wszystkich'}"></option>
+            <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}" th:selected="${group.id == groupFiltered}"></option>
+        </select>
+
         <table cellspacing="0">
+            <caption class="title" style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Teacher')}">Nauczyciele</caption>
+            <caption class="title" style="margin-top: 0; padding-left: 1em;" th:if="${objectTypeName.equals('Dancer')}">Tancerze</caption>
             <tr>
                 <th>imię</th>
                 <th>nazwisko</th>

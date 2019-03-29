@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,9 @@ import java.util.List;
 @Setter
 @Entity(name = "dancer")
 public class Dancer extends Person{
+    {
+        groups = new ArrayList<>();
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,4 +43,11 @@ public class Dancer extends Person{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     private User user;
+    public static Dancer empty(){
+        Dancer dancer = new Dancer();
+        dancer.setFirstName("");
+        dancer.setLastName("");
+        dancer.setEmail("");
+        return dancer;
+    }
 }

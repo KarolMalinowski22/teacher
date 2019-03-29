@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class DancerMap {
+public class PersonMap {
     public static List<Group> fromIds(String ids, GroupService groupService){
         List<Group> groups = new ArrayList<>();
         if(!"".equals(ids)) {

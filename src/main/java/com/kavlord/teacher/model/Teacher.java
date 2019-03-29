@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,13 @@ import java.util.List;
 @Setter
 @Entity(name = "teacher")
 public class Teacher extends Person{
-    @ManyToMany(mappedBy = "teachers")
-
+    {
+        groups = new ArrayList<>();
+    }
+    @ManyToMany
+    @JoinTable(name = "teacher_class",
+            joinColumns = @JoinColumn(name = "teacherId"),
+            inverseJoinColumns = @JoinColumn(name = "classId"))
     private List<Group> groups;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "teacher_lesson",
@@ -25,4 +31,11 @@ public class Teacher extends Person{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     private User user;
+    public static Teacher empty(){
+        Teacher teacher = new Teacher();
+        teacher.setFirstName("");
+        teacher.setLastName("");
+        teacher.setEmail("");
+        return teacher;
+    }
 }

@@ -20,6 +20,8 @@ jQuery(document).ready(function ($) {
         console.log("inside function to change 'values'");
 
         values = $("#choice").chosen().val();
+        console.log(values);
+
         //values is an array containing all the results.
     });
 

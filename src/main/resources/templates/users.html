@@ -31,10 +31,11 @@
 
     <div class="list" th:unless="${userPage.isEmpty()}">
         <table cellspacing="0">
+            <caption class="title" style="margin-top: 0; padding-left: 1em;" >Użytkownicy</caption>
             <tr>
                 <th>login</th>
                 <th>email</th>
-                <th>roles</th>
+                <th style="width: auto">roles</th>
             </tr>
             <tr th:each="user : ${userPage}" th:object="${user}" class="clickRowToUpdate">
                 <td th:text="*{login}"></td>

@@ -29,20 +29,27 @@ public class TeacherController {
     }
     @RequestMapping("/details")
     public String detailed(@ModelAttribute("id")Long id, Model model){
-        model.addAttribute("person", teacherService.findById(id).get());
-        model.addAttribute("allGroups", groupService.findAll());
-        model.addAttribute("personDto", new PersonDto());
-
-        return "personDetails";
+        Optional<Teacher> optionalTeacher = teacherService.findById(id);
+        if(optionalTeacher.isPresent()) {
+            model.addAttribute("person", teacherService.findById(id).get());
+            model.addAttribute("allGroups", groupService.findAll());
+            model.addAttribute("personDto", new PersonDto());
+            return "teacherDetails";
+        }else{
+            model.addAttribute("errorMessage", "Coś się popsuło. Nie można wczytać danych nauczyciela.");
+            return "redirect:/people";
+        }
     }
     @RequestMapping("/addNewTeacher")
     public String addNewDancerForm(Model model){
-        model.addAttribute("teacher", new Teacher());
-        return "forms/addNewTeacherForm";
+            model.addAttribute("person", Teacher.empty());
+            model.addAttribute("allGroups", groupService.findAll());
+            model.addAttribute("personDto", new PersonDto());
+            return "teacherDetails";
     }
     @RequestMapping("/save")
-    public String save(@ModelAttribute(name = "person")Teacher teacher){
-            teacherService.save(teacher);
+    public String save(@ModelAttribute(name = "personDto")PersonDto personDto){
+            teacherService.save(personDto);
         return "redirect:/teachers";
     }
     @RequestMapping("/delete")

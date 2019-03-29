@@ -17,15 +17,17 @@
                 <a class="topNavButton" href="/">Strona główna</a>
             </div>
 
-            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
-                <a class="topNavButton" href="/users">Użytkownicy</a>
-            </div>
-
             <div sec:authorize="hasAnyRole('ROLE_TEACHER')" class="expandable">
                 <a th:href="@{/dancers}" class="topNavButton">Tancerze</a>
                 <ul>
                     <li th:each="group : ${groups}" th:object="${group}"><a th:text="*{name}" class="topNavButton" th:href="@{/dancers/group(groupId = *{id})}"></a></li>
                 </ul>
+            </div>
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a class="topNavButton" href="/teachers">Nauczyciele</a>
+            </div>
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a class="topNavButton" href="/users">Użytkownicy</a>
             </div>
 
 
@@ -51,8 +53,9 @@
 
 
     <div class="list">
-        <h1 style="margin-top: 0; padding-left: 1em;">Grupy</h1>
         <table cellspacing="0">
+            <caption class="title" style="margin-top: 0; padding-left: 1em;">Grupy</caption>
+
             <tr>
                 <th>nazwa</th>
                 <th>miasto</th>
