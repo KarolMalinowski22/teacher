@@ -211,3 +211,43 @@ th{
 .pagesNumbersBox{
     grid-column-start: 2;
 }
+
+
+#groupId{
+    background: rgba(64, 19, 3, 0.8);
+    background: linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
+    border: 0;
+    font-size: 1.4em;
+    font-family: 'Ubuntu', sans-serif;
+    color: #cfff00;
+}
+#groupId option{
+    background: rgba(19, 55, 0, 1);
+}
+
+
+
+/*chosen*/
+.chosen-container-multi .chosen-choices{
+    background: rgba(64, 19, 3, 0.8);
+    background: linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
+    background: -webkit-linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));
+    border: 0;
+    font-size: 1.4em;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: none !important;
+
+}
+.search-choice{
+    padding: 5px !important;
+    padding-top: 6px !important;
+    color: #cfff00 !important;
+    background: rgba(64, 19, 3, 0.6) !important;
+    border-color: rgba(19, 55, 0, 1) !important;
+    box-shadow: none !important;
+}
+.chosen-search-input{
+    color: rgba(207, 255, 0, 0.4) !important;
+}
+
