@@ -48,7 +48,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Optional<Teacher> findById(Long id) {
-        return teacherRepository.findById(id);
+        return id == null ? Optional.empty() : teacherRepository.findById(id);
     }
 
     @Override
