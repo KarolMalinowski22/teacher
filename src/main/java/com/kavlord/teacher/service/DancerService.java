@@ -24,4 +24,5 @@ public interface DancerService {
 
     List<Dancer> findByGroup(Group group);
 
+    List<Dancer> findAllByGroup(Group group);
 }

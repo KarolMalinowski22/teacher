@@ -35,10 +35,7 @@ public class Dancer extends Person{
             joinColumns = @JoinColumn(name = "dancerId"),
             inverseJoinColumns = @JoinColumn(name = "classId"))
     private List<Group> groups;
-    @ManyToMany
-    @JoinTable(name = "presence",
-            joinColumns = @JoinColumn(name = "dancerId"),
-            inverseJoinColumns = @JoinColumn(name = "lessonId"))
+    @ManyToMany(mappedBy = "presence")
     private List<Lesson> presence;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")

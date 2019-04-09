@@ -24,7 +24,7 @@ public class UserServiceImplementation implements UserService {
     PasswordEncoder passwordEncoder;
 
     @Override
-    public Page<User> getAllUsersPaginated(Pageable pageable) {
+    public Page<User> getAllPaginated(Pageable pageable) {
         int pageSize = pageable.getPageSize();
         int pageNumber = pageable.getPageNumber();
         int startItem = pageSize * pageNumber;
@@ -35,7 +35,7 @@ public class UserServiceImplementation implements UserService {
         }else{
             listForPage = all.subList(startItem, Math.min(startItem + pageSize, all.size()));
         }
-        Page<User> page = new PageImpl<>(listForPage, PageRequest.of(pageNumber, pageSize), all.size());
+        Page<User> page = new PageImpl<>(listForPage, pageable, all.size());
         return page;
     }
     @Override

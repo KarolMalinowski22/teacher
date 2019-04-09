@@ -54,7 +54,7 @@
                         <select multiple class="chosen-select" name="choice" id="choice">
                             <option th:each="teacher:${allTeachers}" th:value="${teacher.id}" th:text="${teacher.firstName}" th:selected="${#lists.contains(group.teachers, teacher)}"></option>
                         </select>
-                        <input th:field="*{teachers}" type="hidden" id="transporter" name="transporter">
+                        <input th:field="*{teachers}" type="hidden" id="teachersSelected" name="teachersSelected">
                     </div>
 
         </form>

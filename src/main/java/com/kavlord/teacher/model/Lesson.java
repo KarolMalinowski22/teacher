@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity(name="lesson")
-class Lesson {
+public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +19,14 @@ class Lesson {
     private Group group;
     private Date date;
     private String description;
-    @ManyToMany(mappedBy = "presence")
+    @ManyToMany
+    @JoinTable(name = "presence",
+    joinColumns = @JoinColumn(name = "lessonId"),
+    inverseJoinColumns = @JoinColumn(name = "dancerId"))
     private List<Dancer> presence;
-    @ManyToMany(mappedBy = "lessons")
+    @ManyToMany
+    @JoinTable(name = "teacher_lesson",
+    joinColumns = @JoinColumn(name = "lessonId"),
+    inverseJoinColumns = @JoinColumn(name = "teacherId"))
     private List<Teacher> teachers;
 }

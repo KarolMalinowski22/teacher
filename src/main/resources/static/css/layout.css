@@ -160,7 +160,7 @@ th{
     width: 30em;
 }
 
-.detailed input{
+.detailed input, .defaultInput{
     margin: 10px 0px 10px 0px;
     background: rgba(19, 55, 0, 0.8);
     background: linear-gradient(rgba(64, 19, 3, 0.8), rgba(19, 55, 0, 0.8), rgba(64, 19, 3, 0.8));

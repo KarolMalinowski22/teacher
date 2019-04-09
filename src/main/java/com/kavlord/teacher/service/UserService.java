@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 public interface UserService {
-     Page<User> getAllUsersPaginated(Pageable pageable);
+     Page<User> getAllPaginated(Pageable pageable);
      User register(UserDto userDto);
 
     Optional<User> findUserById(Long id);

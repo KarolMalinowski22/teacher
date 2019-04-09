@@ -33,6 +33,11 @@ public class DancerServiceImpl implements DancerService {
     }
 
     @Override
+    public List<Dancer> findAllByGroup(Group group) {
+        return dancerRepository.findAllByGroupsContains(group);
+    }
+
+    @Override
     public List<Dancer> findAllActive() {
         throw new NotImplementedException();
     }

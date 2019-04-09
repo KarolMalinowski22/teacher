@@ -39,13 +39,32 @@ jQuery(document).ready(function ($) {
 
 
 });
+function extractPresenceFromCheckbox() {
+    var presenceObjects;
+    var presenceValues = [''];
+    var presenceCheckboxContainer = document.getElementById("presenceCheckboxContainer");
+    presenceObjects = presenceCheckboxContainer.getElementsByTagName("presence");
+    var i;
+    var length = presenceObjects.length;
+    for(i = 0; i < length; i++){
+        if(presenceObjects[i].checked){
+            presenceValues.push(presenceObjects[i].value)
+        }
+    }
+
+    var presenceDto = document.getElementById("presenceDto");
+    presenceDto.value=null;
+    presenceDto.value = presenceValues;
+    console.log(presenceValues.value);
+}
+
 function processDto(formId)
 {
-    var transporter = document.getElementById("transporter");
+    var teachersSelected = document.getElementById("teachersSelected");
 
-    transporter.value = values;
+    teachersSelected.value = values;
 
-    console.log(transporter.value);
+    console.log(teachersSelected.value);
 
     document.getElementById(formId).submit();
 }

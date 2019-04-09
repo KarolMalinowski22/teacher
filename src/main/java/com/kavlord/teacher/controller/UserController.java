@@ -41,7 +41,7 @@ public class UserController {
     public String displayAllUsers(Model model, @RequestParam("page") Optional<Integer> pageOpt, @RequestParam("size") Optional<Integer> sizeOpt){
         Integer page = pageOpt.orElse(1);
         Integer size = sizeOpt.orElse(defaultSize);
-        Page<User> userPage = userService.getAllUsersPaginated(PageRequest.of(page - 1, size));
+        Page<User> userPage = userService.getAllPaginated(PageRequest.of(page - 1, size));
         model.addAttribute("userPage", userPage);
         Integer totalPages = userPage.getTotalPages();
         if(totalPages > 0){

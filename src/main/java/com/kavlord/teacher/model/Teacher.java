@@ -23,10 +23,7 @@ public class Teacher extends Person{
             joinColumns = @JoinColumn(name = "teacherId"),
             inverseJoinColumns = @JoinColumn(name = "classId"))
     private List<Group> groups;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "teacher_lesson",
-            joinColumns = @JoinColumn(name = "teacherId"),
-            inverseJoinColumns = @JoinColumn(name = "lessonId"))
+    @ManyToMany(mappedBy = "teachers")
     private List <Lesson> lessons;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
